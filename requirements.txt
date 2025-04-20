@@ -1,5 +1,5 @@
 Flask==2.2.2
-tensorflow==2.10.0
+tensorflow==2.15.0
 numpy<2
 werkzeug==2.2.2
 
