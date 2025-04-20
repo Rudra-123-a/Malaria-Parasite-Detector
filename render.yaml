@@ -6,6 +6,6 @@ services:
     startCommand: python app.py
     plan: free
     envVars:
-      - key: FLASK_ENV
-        value: production
+      - key: FLASK_DEBUG
+        value: "0"
 
