@@ -22,7 +22,7 @@ output = "model/malaria_model.h5"
 # Check if file already exists to avoid redownload
 if not os.path.exists(output):
     print("Downloading model from Google Drive...")
-    gdown.download(url, output, quiet=False)
+    gdown.download("https://drive.google.com/file/d/1gxQzYWm6ChnnB8pOCfzk6uynf_digZjD/view?usp=sharing", output, quiet=False, fuzzy=True)
 
 # Load the trained model
 # MODEL_PATH = "model/malaria_model.h5"  # Use forward slashes for cross-platform compatibility
