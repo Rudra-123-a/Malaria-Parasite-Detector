@@ -12,13 +12,14 @@ app = Flask(__name__)
 
 MODEL_PATH = "model/malaria_model.h5"
 
-# Only download if the model doesn't exist
-if not os.path.exists(MODEL_PATH):
-    os.makedirs("model", exist_ok=True)
-    file_id = "1gxQzYWm6ChnnB8pOCfzk6uynf_digZjD"  # Replace with your actual file ID
-    url = f"https://drive.google.com/uc?id={file_id}"
+# Direct Google Drive download
+url = "https://drive.google.com/file/d/1gxQzYWm6ChnnB8pOCfzk6uynf_digZjD/view?usp=sharing"
+output = "model/malaria_model.h5"
+
+# Check if file already exists to avoid redownload
+if not os.path.exists(output):
     print("Downloading model from Google Drive...")
-    gdown.download(url, MODEL_PATH, quiet=False)
+    gdown.download(url, output, quiet=False)
 
 # Load the trained model
 # MODEL_PATH = "model/malaria_model.h5"  # Use forward slashes for cross-platform compatibility
