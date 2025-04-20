@@ -12,6 +12,9 @@ app = Flask(__name__)
 
 MODEL_PATH = "model/malaria_model.h5"
 
+# Ensure model directory exists
+os.makedirs("model", exist_ok=True)
+
 # Direct Google Drive download
 url = "https://drive.google.com/file/d/1gxQzYWm6ChnnB8pOCfzk6uynf_digZjD/view?usp=sharing"
 output = "model/malaria_model.h5"
