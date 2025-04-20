@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 services:
   - type: web
     name: malaria-detector
@@ -9,15 +8,4 @@ services:
     envVars:
       - key: FLASK_ENV
         value: production
-=======
-services:
-  - type: web
-    name: malaria-detector
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python app.py
-    plan: free
-    envVars:
-      - key: FLASK_ENV
-        value: production
->>>>>>> 62f3599245311a26f2f992997606ce88335189e4
+
