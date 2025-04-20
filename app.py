@@ -6,6 +6,8 @@ from flask import Flask, request, render_template, redirect, url_for, send_from_
 from tensorflow.keras.preprocessing import image
 from werkzeug.utils import secure_filename
 
+print("TensorFlow running on:", "GPU" if tf.config.list_physical_devices('GPU') else "CPU")
+
 app = Flask(__name__)
 
 # Load the trained model
