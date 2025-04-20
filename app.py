@@ -17,6 +17,7 @@ if not os.path.exists(MODEL_PATH):
     os.makedirs("model", exist_ok=True)
     file_id = "1th-9CLlycZelO2nMsBkX2mvDarr0R9vz"  # Replace with your actual file ID
     url = f"https://drive.google.com/uc?id={file_id}"
+    print("Downloading model from Google Drive...")
     gdown.download(url, MODEL_PATH, quiet=False)
 
 # Load the trained model
