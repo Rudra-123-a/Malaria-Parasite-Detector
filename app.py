@@ -8,6 +8,7 @@ from werkzeug.utils import secure_filename
 print("TensorFlow running on:", "GPU" if tf.config.list_physical_devices('GPU') else "CPU")
 
 app = Flask(__name__)
+port = int(os.environ.get("PORT", 10000))
 
 # Load the trained model
 MODEL_PATH = "model/malaria_model.h5"  # Use forward slashes for cross-platform compatibility
