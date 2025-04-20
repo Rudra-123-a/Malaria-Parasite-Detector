@@ -1,18 +1,28 @@
 import os
 import numpy as np
 import tensorflow as tf
+import gdown
 from flask import Flask, request, render_template, redirect, url_for, send_from_directory
 from tensorflow.keras.preprocessing import image
 from werkzeug.utils import secure_filename
 
-print("TensorFlow running on:", "GPU" if tf.config.list_physical_devices('GPU') else "CPU")
+# print("TensorFlow running on:", "GPU" if tf.config.list_physical_devices('GPU') else "CPU")
 
 app = Flask(__name__)
-port = int(os.environ.get("PORT", 10000))
+
+MODEL_PATH = "model/malaria_model.h5"
+
+# Only download if the model doesn't exist
+if not os.path.exists(MODEL_PATH):
+    os.makedirs("model", exist_ok=True)
+    file_id = "1th-9CLlycZelO2nMsBkX2mvDarr0R9vz"  # Replace with your actual file ID
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, MODEL_PATH, quiet=False)
 
 # Load the trained model
-MODEL_PATH = "model/malaria_model.h5"  # Use forward slashes for cross-platform compatibility
+# MODEL_PATH = "model/malaria_model.h5"  # Use forward slashes for cross-platform compatibility
 model = tf.keras.models.load_model(MODEL_PATH)
+
 
 UPLOAD_FOLDER = "static/uploads"
 GRAPHS_FOLDER = "static/graphs"
