@@ -79,12 +79,12 @@ def home():
 def serve_graphs(filename):
     return send_from_directory(GRAPHS_FOLDER, filename)
 
-<<<<<<< HEAD
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=3000, debug=True)
-=======
+
 port = int(os.environ.get("PORT", 10000))  # Render sets PORT automatically
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port, debug=os.getenv("FLASK_DEBUG") == "1")
->>>>>>> 14bc33afb71038dbdec87621677bd973a36dda93
+
