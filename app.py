@@ -1,15 +1,33 @@
 import os
 import numpy as np
 import tensorflow as tf
+import gdown
 from flask import Flask, request, render_template, redirect, url_for, send_from_directory
 from tensorflow.keras.preprocessing import image
 from werkzeug.utils import secure_filename
 
+# print("TensorFlow running on:", "GPU" if tf.config.list_physical_devices('GPU') else "CPU")
+
 app = Flask(__name__)
 
+MODEL_PATH = "model/malaria_model.h5"
+
+# Ensure model directory exists
+os.makedirs("model", exist_ok=True)
+
+# Direct Google Drive download
+url = "https://drive.google.com/file/d/1gxQzYWm6ChnnB8pOCfzk6uynf_digZjD/view?usp=sharing"
+output = "model/malaria_model.h5"
+
+# Check if file already exists to avoid redownload
+if not os.path.exists(output):
+    print("Downloading model from Google Drive...")
+    gdown.download("https://drive.google.com/file/d/1gxQzYWm6ChnnB8pOCfzk6uynf_digZjD/view?usp=sharing", output, quiet=False, fuzzy=True)
+
 # Load the trained model
-MODEL_PATH = "model/malaria_model.h5"  # Use forward slashes for cross-platform compatibility
+# MODEL_PATH = "model/malaria_model.h5"  # Use forward slashes for cross-platform compatibility
 model = tf.keras.models.load_model(MODEL_PATH)
+
 
 UPLOAD_FOLDER = "static/uploads"
 GRAPHS_FOLDER = "static/graphs"
@@ -61,5 +79,12 @@ def home():
 def serve_graphs(filename):
     return send_from_directory(GRAPHS_FOLDER, filename)
 
+<<<<<<< HEAD
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=3000, debug=True)
+=======
+port = int(os.environ.get("PORT", 10000))  # Render sets PORT automatically
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=port, debug=os.getenv("FLASK_DEBUG") == "1")
+>>>>>>> 14bc33afb71038dbdec87621677bd973a36dda93

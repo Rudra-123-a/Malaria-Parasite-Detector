@@ -1,15 +1,5 @@
-<<<<<<< HEAD
-
 Flask==2.2.2
-tensorflow==2.15.0
-numpy>=1.24.0
 werkzeug==2.2.2
-
-=======
-
-Flask==2.2.2
-tensorflow==2.15.0
-numpy>=1.24.0
-werkzeug==2.2.2
-
->>>>>>> 62f3599245311a26f2f992997606ce88335189e4
+tensorflow>=2.15,<2.17
+numpy<2
+gdown
