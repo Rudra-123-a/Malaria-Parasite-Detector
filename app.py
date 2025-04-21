@@ -87,4 +87,3 @@ port = int(os.environ.get("PORT", 10000))  # Render sets PORT automatically
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port, debug=os.getenv("FLASK_DEBUG") == "1")
-
